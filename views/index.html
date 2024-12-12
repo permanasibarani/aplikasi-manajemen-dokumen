@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" href="/style/main.css" />
+    <script src="/script/bootstrap.bundle.min.js" defer></script>
+    <script type="module" src="/script/script.mjs" defer></script>
+  </head>
+  <body>
+    <!--* Modal -->
+    <!--* Confirmation Modal  -->
+    <div
+      class="modal fade"
+      id="confirmation-modal"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel"></h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+              id="modal-cancel"
+            ></button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              id="modal-submit"
+            ></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--* Tahun Modal -->
+    <div
+      class="modal fade"
+      id="tahun-modal"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">
+              Input tahun
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <label for="input-tahun" class="col-4 col-form-label"
+                >Masukkan Tahun:
+              </label>
+              <div class="col-8">
+                <input type="text" class="form-control" id="input-tahun" />
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+              id="modal-cancel"
+            >
+              Keluar
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              id="modal-tahun-submit"
+              data-bs-target="#confirmation-modal"
+              data-bs-toggle="modal"
+              data-bs-tipe="tahun"
+            >
+              Lanjutkan
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--* Warkah Modal -->
+    <div
+      class="modal fade"
+      id="warkah-modal"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">
+              Input Warkah
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <label class="col-4 col-form-label">Nomor Dokumen: </label>
+              <div class="col-3">
+                <span id="tooltip-modal-warkah">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="jumlah-awal-warkah"
+                    readonly
+                  />
+                </span>
+              </div>
+              <div class="col-1 p-0">
+                <p class="text-center">-</p>
+              </div>
+              <div class="col-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="jumlah-akhir-warkah"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+              id="modal-cancel"
+            >
+              Keluar
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              id="modal-warkah-submit"
+              data-bs-target="#confirmation-modal"
+              data-bs-toggle="modal"
+              data-bs-tipe="warkah"
+            >
+              Lanjutkan
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-content" id="v-pills-tabContent">
+      <div
+        class="tab-pane fade show active"
+        id="v-pills-home"
+        role="tabpanel"
+        aria-labelledby="v-pills-home-tab"
+        tabindex="0"
+      >
+        <div class="container">
+          <div class="row">
+            <div class="col-3">
+              <div
+                class="nav flex-column nav-pills sidebar h-100"
+                id="v-pills-tab"
+                role="tablist"
+                aria-orientation="vertical"
+              >
+                <button
+                  class="nav-link active"
+                  id="v-pills-home-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#v-pills-home"
+                  type="button"
+                  role="tab"
+                  aria-controls="v-pills-home"
+                  aria-selected="true"
+                >
+                  Home
+                </button>
+                <button
+                  class="nav-link"
+                  id="v-pills-profile-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#v-pills-profile"
+                  type="button"
+                  role="tab"
+                  aria-controls="v-pills-profile"
+                  aria-selected="false"
+                >
+                  Profile
+                </button>
+              </div>
+            </div>
+            <div class="col-9">
+              <div class="row g-4">
+                <div class="col-12">
+                  <img
+                    src="/image/header.svg"
+                    class="img-fluid"
+                    alt="Deskripsi Alternatif"
+                  />
+                </div>
+                <div class="col-6">
+                  <div class="dropdown d-grid">
+                    <button
+                      class="btn btn-secondary text-start d-flex justify-content-between align-items-center"
+                      type="button"
+                      data-bs-toggle="dropdown"
+                      data-bs-auto-close="inside"
+                      aria-expanded="false"
+                      id="button-ruangan"
+                    >
+                      Pilih Ruangan
+                      <i class="fa-solid fa-caret-down fa-lg rotate-icon"></i>
+                    </button>
+                    <ul
+                      class="dropdown-menu scrollable-ul"
+                      id="dropdown-ruangan"
+                    >
+                      <li><hr class="dropdown-divider" /></li>
+                      <li
+                        class="dropdown-item"
+                        id="button-tambah-ruangan"
+                        data-bs-toggle="modal"
+                        data-bs-target="#confirmation-modal"
+                        data-bs-tipe="ruangan"
+                      >
+                        Tambah Ruangan
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <span id="tooltip-lemari">
+                    <div class="dropdown d-grid">
+                      <button
+                        class="btn btn-secondary text-start d-flex justify-content-between align-items-center"
+                        type="button"
+                        data-bs-toggle="dropdown"
+                        data-bs-auto-close="inside"
+                        aria-expanded="false"
+                        id="button-lemari"
+                      >
+                        Pilih Lemari
+                        <i class="fa-solid fa-caret-down fa-lg rotate-icon"></i>
+                      </button>
+
+                      <ul
+                        class="dropdown-menu scrollable-ul"
+                        id="dropdown-lemari"
+                      >
+                        <li><hr class="dropdown-divider" /></li>
+                        <li
+                          class="dropdown-item"
+                          id="button-tambah-lemari"
+                          data-bs-toggle="modal"
+                          data-bs-target="#confirmation-modal"
+                          data-bs-tipe="lemari"
+                        >
+                          Tambah Lemari
+                        </li>
+                      </ul>
+                    </div>
+                  </span>
+                </div>
+                <div class="col-6">
+                  <span id="tooltip-rak">
+                    <div class="dropdown d-grid">
+                      <button
+                        class="btn btn-secondary text-start d-flex justify-content-between align-items-center"
+                        type="button"
+                        data-bs-toggle="dropdown"
+                        data-bs-auto-close="inside"
+                        aria-expanded="false"
+                        id="button-rak"
+                      >
+                        Pilih Rak
+                        <i class="fa-solid fa-caret-down fa-lg rotate-icon"></i>
+                      </button>
+
+                      <ul class="dropdown-menu scrollable-ul" id="dropdown-rak">
+                        <li><hr class="dropdown-divider" /></li>
+                        <li
+                          class="dropdown-item"
+                          id="button-tambah-rak"
+                          data-bs-toggle="modal"
+                          data-bs-target="#confirmation-modal"
+                          data-bs-tipe="rak"
+                        >
+                          Tambah Rak
+                        </li>
+                      </ul>
+                    </div>
+                  </span>
+                </div>
+                <div class="col-6">
+                  <span id="tooltip-tahun">
+                    <div class="dropdown d-grid">
+                      <button
+                        class="btn btn-secondary text-start d-flex justify-content-between align-items-center"
+                        type="button"
+                        data-bs-toggle="dropdown"
+                        data-bs-auto-close="inside"
+                        aria-expanded="false"
+                        id="button-tahun"
+                      >
+                        Pilih Tahun
+                        <i class="fa-solid fa-caret-down fa-lg rotate-icon"></i>
+                      </button>
+
+                      <ul
+                        class="dropdown-menu scrollable-ul"
+                        id="dropdown-tahun"
+                      >
+                        <li><hr class="dropdown-divider" /></li>
+                        <li
+                          class="dropdown-item"
+                          id="button-tambah-tahun"
+                          data-bs-toggle="modal"
+                          data-bs-target="#tahun-modal"
+                          data-bs-tipe="tahun"
+                        >
+                          Tambah Tahun
+                        </li>
+                      </ul>
+                    </div>
+                  </span>
+                </div>
+                <div class="col-6">
+                  <span id="tooltip-bundelan">
+                    <div class="dropdown d-grid">
+                      <button
+                        class="btn btn-secondary text-start d-flex justify-content-between align-items-center"
+                        type="button"
+                        data-bs-toggle="dropdown"
+                        data-bs-auto-close="inside"
+                        aria-expanded="false"
+                        id="button-bundelan"
+                      >
+                        Pilih Bundelan
+                        <i class="fa-solid fa-caret-down fa-lg rotate-icon"></i>
+                      </button>
+
+                      <ul
+                        class="dropdown-menu scrollable-ul"
+                        id="dropdown-bundelan"
+                      >
+                        <li><hr class="dropdown-divider" /></li>
+                        <li
+                          class="dropdown-item"
+                          id="button-tambah-bundelan"
+                          data-bs-toggle="modal"
+                          data-bs-target="#confirmation-modal"
+                          data-bs-tipe="bundelan"
+                        >
+                          Tambah Bundelan
+                        </li>
+                      </ul>
+                    </div>
+                  </span>
+                </div>
+                <div class="col-6">
+                  <span id="tooltip-warkah">
+                    <div class="dropdown d-grid">
+                      <button
+                        class="btn btn-secondary text-start d-flex justify-content-between align-items-center"
+                        type="button"
+                        data-bs-toggle="dropdown"
+                        data-bs-auto-close="inside"
+                        aria-expanded="false"
+                        id="button-warkah"
+                      >
+                        Pilih Warkah
+                        <i class="fa-solid fa-caret-down fa-lg rotate-icon"></i>
+                      </button>
+
+                      <ul
+                        class="dropdown-menu scrollable-ul"
+                        id="dropdown-warkah"
+                      >
+                        <li><hr class="dropdown-divider" /></li>
+                        <li
+                          class="dropdown-item"
+                          id="button-tambah-warkah"
+                          data-bs-toggle="modal"
+                          data-bs-target="#warkah-modal"
+                          data-bs-tipe="warkah"
+                        >
+                          Tambah Warkah
+                        </li>
+                      </ul>
+                    </div>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="tab-pane fade"
+        id="v-pills-profile"
+        role="tabpanel"
+        aria-labelledby="v-pills-profile-tab"
+        tabindex="0"
+      >
+        <div class="container">
+          <div class="row">
+            <div class="col-3">
+              <div>
+                <ul class="nav flex-column">
+                  <li class="nav-item">
+                    <a class="nav-link active" href="/home">Input Dokumen</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/edit">Cari Dokumen</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-9">
+              <div class="row g-4">
+                <div class="col-12">
+                  <img
+                    src="/image/header.svg"
+                    class="img-fluid"
+                    alt="Deskripsi Alternatif"
+                  />
+                </div>
+                <div class="col-12">
+                  <div class="card">
+                    <div class="card-header">Cari Warkah</div>
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-5">
+                          <div class="row g-4">
+                            <div class="col-12">
+                              <label for="search-tahun" class="form-label"
+                                >Masukkan Tahun
+                              </label>
+                              <div class="input-group">
+                                <span class="input-group-text">ex. 1999</span>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="search-tahun"
+                                />
+                              </div>
+                            </div>
+                            <div class="col-12">
+                              <label for="search-warkah" class="form-label"
+                                >Masukkan Nomor Warkah
+                              </label>
+                              <div class="input-group">
+                                <span class="input-group-text">ex. 12</span>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="search-warkah"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-7">
+                          <table class="table table-sm">
+                            <thead>
+                              <tr></tr>
+                            </thead>
+                            <tbody></tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "name": "sqlite-express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.mjs",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon server",
+    "start": "node server.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "better-sqlite3": "^9.2.2",
+    "express": "^4.18.2",
+    "open": "^9.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}

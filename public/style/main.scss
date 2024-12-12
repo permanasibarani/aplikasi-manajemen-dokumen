@@ -1,0 +1,130 @@
+// Include any default variable overrides here (though functions won't be available)
+
+$dropdown-min-width: 15rem;
+$dropdown-padding-y: 0.5rem;
+
+$nav-link-color: white;
+$nav-link-hover-color: rgba(255, 255, 255, 0.763);
+$nav-link-font-size: 16px;
+$nav-pills-link-active-bg: #366b99;
+$nav-pills-link-active-color: #f8f8ff;
+$nav-pills-border-radius: 0px;
+
+$card-border-color: black;
+$card-cap-bg: #f5b726;
+
+$input-group-addon-bg: #f5b726;
+$input-group-addon-border-color: black;
+
+@import "../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "../../node_modules/@fortawesome/fontawesome-free/scss/solid.scss";
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+// Then add additional custom code here
+
+body {
+  margin-top: 40px; /* This margin just makes the text easier to read. You can remove it if you want since it can mess with your other styles. */
+}
+
+body::before {
+  content: "XS";
+  color: red;
+  font-size: 2rem;
+  font-weight: bold;
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+
+/* This box class is purely used for explaining how the bootstrap grid system works. */
+.box {
+  background-color: #3498db;
+  border: 2px solid #2980b9;
+  border-radius: 8px;
+  margin: 20px;
+  padding: 10px;
+}
+
+#button-ruangan:hover,
+.dropdown-menu:hover,
+.dropdown-menu.clicked {
+  cursor: pointer;
+}
+
+.scrollable-ul {
+  max-height: 200px; /* Atur tinggi maksimal sesuai kebutuhan */
+  overflow-y: auto;
+}
+
+.rotate-icon {
+  transition: transform 0.3s ease;
+}
+
+.header-img {
+  height: 200px;
+  width: 1120px;
+}
+
+th {
+  font-size: 14px;
+}
+
+.sidebar {
+  border-radius: 10px;
+  background-color: #00355d;
+  height: 450px;
+}
+
+.navMenu {
+  color: black;
+}
+
+.button-dropdown {
+  background-color: #f5b726;
+  color: black;
+}
+
+.button-dropdown:hover {
+  color: #343333;
+  background-color: #f5b726b7;
+}
+
+.button-dropdown:focus,
+.button-dropdown:active {
+  background-color: #f5b726;
+  color: black;
+}
+
+.button-dropdown:disabled {
+  background-color: #f5b726ac;
+}
+
+@media (min-width: 576px) {
+  body::before {
+    content: "SM";
+  }
+}
+
+@media (min-width: 768px) {
+  body::before {
+    content: "MD";
+  }
+}
+
+@media (min-width: 992px) {
+  body::before {
+    content: "LG";
+  }
+}
+
+@media (min-width: 1200px) {
+  body::before {
+    content: "XL";
+  }
+}
+
+@media (min-width: 1400px) {
+  body::before {
+    content: "XXL";
+  }
+}
